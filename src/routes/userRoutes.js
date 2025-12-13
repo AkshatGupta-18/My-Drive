@@ -52,9 +52,7 @@ router.get('/login', (req, res) => {
 });
 
 // Handle login
-// Handle login
 router.post('/login', async (req, res) => {
-    console.log(req.body); // see what the server receives
 
     let { email, password } = req.body;
     email = email.trim().toLowerCase();

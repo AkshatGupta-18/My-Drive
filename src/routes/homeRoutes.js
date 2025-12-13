@@ -9,7 +9,7 @@ router.get('/', auth, async (req, res) => {
     // Fetch files uploaded by this user
     const files = await File.find({ userId: req.user._id }).sort({ createdAt: -1 });
 
-    res.render('home', { user: req.user, files }); // pass user and files to EJS
+    res.render('home', { user: req.user, files }); 
   } catch (err) {
     console.error(err);
     res.status(500).send('Server error');

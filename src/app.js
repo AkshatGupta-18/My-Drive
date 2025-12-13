@@ -6,6 +6,11 @@ const mongoose = require('mongoose');
 const cookieParser = require('cookie-parser');
 const fileRoutes = require('./routes/fileRoutes');
 
+mongoose.connect(process.env.MONGO_URI)
+  .then(() => console.log("MongoDB connected"))
+  .catch(err => console.log(err));
+
+
 
 const app = express();
 
@@ -24,10 +29,7 @@ app.get('/', (req, res) => {
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
-// MongoDB connection
-mongoose.connect(process.env.MONGO_URI)
-    .then(() => console.log('MongoDB connected'))
-    .catch(err => console.error('MongoDB connection error:', err));
+
 
 // Routes — after middleware
 const homeRoutes = require('./routes/homeRoutes');
